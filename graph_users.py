@@ -5,6 +5,7 @@ import time
 import csv
 
 # Replace these with your app reg details
+client_id = ''
 client_secret = ''
 tenant_id = ''
 
