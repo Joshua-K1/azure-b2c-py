@@ -4,8 +4,7 @@ import requests
 import time
 import csv
 
-# Replace these with your client credentials
-client_id = ''
+# Replace these with your app reg details
 client_secret = ''
 tenant_id = ''
 
@@ -44,8 +43,11 @@ for x in range(25):
 
     # Retrieve User Dict
     user_list = users["value"]
-    
-   # continuation_url = users["@odata.nextLink"]
+   
+    if '@odata.nextLink' in users:
+        continuation_url = users["@odata.nextLink"]
+    else: 
+        continuation_url = 'None'
 
     print("URL taken from response: ", continuation_url)
 
