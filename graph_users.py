@@ -1,14 +1,12 @@
-from email import header
-from operator import indexOf
 import requests
 import csv
 import argparse 
 
 def main(args):
 
-    client_id = args.client_id
-    client_secret = args.client_secret
-    tenant_id = args.tenant_id
+    client_id = args.clientId
+    client_secret = args.clientSecret
+    tenant_id = args.tenantId
 
     print(f"Client ID: {client_id}")
     print(f"Client Secret: {client_secret}")
