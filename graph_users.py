@@ -2,21 +2,17 @@ from email import header
 from operator import indexOf
 import requests
 import csv
-import argspace
+import argparse 
 
 def main(args):
 
-    arg_one = args.argumentOne
-    arg_two = args.argumentTwo
+    client_id = args.client_id
+    client_secret = args.client_secret
+    tenant_id = args.tenant_id
 
-    print(f"Argument One: {arg_one}")
-    print(f"Argument Two: {arg_two}")
-
-if __name__ == "__name__": 
-    # Replace these with your app reg details
-    client_id = ''
-    client_secret = ''
-    tenant_id = ''
+    print(f"Client ID: {client_id}")
+    print(f"Client Secret: {client_secret}")
+    print(f"Tenant ID: {tenant_id}")
 
     # Get an access token
     token_url = f'https://login.microsoftonline.com/{tenant_id}/oauth2/v2.0/token'
@@ -141,3 +137,20 @@ if __name__ == "__name__":
                 writer.writerow(row)
 
         print(f"Data written to {csv_file_name}")
+
+
+if __name__ == "__main__":
+
+    parser = argparse.ArgumentParser(description="Process external arguments")
+
+    parser.add_argument("-clientId", type=str, required=True, help="The Client ID")
+    parser.add_argument("-clientSecret", type=str, required=True, help="The Client Secret")
+    parser.add_argument("-tenantId", type=str, required=True, help="The Tenant ID")
+
+    args = parser.parse_args()
+
+    main(args)
+
+
+
+
