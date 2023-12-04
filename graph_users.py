@@ -4,13 +4,14 @@ import argparse
 
 def main(args):
 
+    if args.listAll: 
+        list_all(args)
+
+def list_all(args):
+
     client_id = args.clientId
     client_secret = args.clientSecret
     tenant_id = args.tenantId
-
-    print(f"Client ID: {client_id}")
-    print(f"Client Secret: {client_secret}")
-    print(f"Tenant ID: {tenant_id}")
 
     # Get an access token
     token_url = f'https://login.microsoftonline.com/{tenant_id}/oauth2/v2.0/token'
@@ -140,10 +141,11 @@ def main(args):
 if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(description="Process external arguments")
-
+    
     parser.add_argument("-clientId", type=str, required=True, help="The Client ID")
     parser.add_argument("-clientSecret", type=str, required=True, help="The Client Secret")
     parser.add_argument("-tenantId", type=str, required=True, help="The Tenant ID")
+    parser.add_argument("-listAll", action="store_true", help="List all users")
 
     args = parser.parse_args()
 
