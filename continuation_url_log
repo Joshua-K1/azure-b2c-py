@@ -1,1 +1,0 @@
-https://graph.microsoft.com/v1.0/users?$select=signInActivity&$top=999

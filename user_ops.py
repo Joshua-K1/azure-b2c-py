@@ -1,5 +1,5 @@
 import requests
-from requests.api import get
+import csv
 from graph_ops import get_token
 
 # List all users within the tenant
@@ -11,7 +11,7 @@ def list_all(args):
     continuation_url = 'https://graph.microsoft.com/v1.0/users?$select=signInActivity&$top=999'
 
     for x in range(25):
-        f = open("continuation_url_log", "a")
+        f = open("continuation_url.log", "a")
         f.write(continuation_url)
         f.write("\n")
         
