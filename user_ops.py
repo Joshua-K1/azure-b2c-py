@@ -5,7 +5,6 @@ from graph_ops import get_token
 # List all users within the tenant
 def list_all(args):
     token = get_token(args)
-    print(token)
 
     # Iniial URL, uncomment on first run
     continuation_url = 'https://graph.microsoft.com/v1.0/users?$select=signInActivity&$top=999'
