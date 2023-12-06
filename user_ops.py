@@ -1,20 +1,11 @@
 import requests
+from requests.api import get
+from graph_ops import get_token
 
+# List all users within the tenant
 def list_all(args):
-    client_id = args.clientId
-    client_secret = args.clientSecret
-    tenant_id = args.tenantId
-
-    # Get an access token
-    token_url = f'https://login.microsoftonline.com/{tenant_id}/oauth2/v2.0/token'
-    token_data = {
-        'grant_type': 'client_credentials',
-        'client_id': client_id,
-        'client_secret': client_secret,
-        'scope': 'https://graph.microsoft.com/.default'
-    }
-    token_r = requests.post(token_url, data=token_data)
-    token = token_r.json().get("access_token")
+    token = get_token(args)
+    print(token)
 
     # Iniial URL, uncomment on first run
     continuation_url = 'https://graph.microsoft.com/v1.0/users?$select=signInActivity&$top=999'
@@ -128,5 +119,13 @@ def list_all(args):
                 writer.writerow(row)
 
         print(f"Data written to {csv_file_name}")
+
+# List details of a specific user
+def list_user_details(args):
+    print("Printing specific user details") 
+
+    client_id = args.clientId
+    client_secret = args.clientSecret
+    tenant_id = args.tenantId
 
 
