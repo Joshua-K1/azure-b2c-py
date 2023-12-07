@@ -23,5 +23,15 @@ def get_token(args):
         print("Failed to get authentication token...")
         print("Ensure that the Client ID, Client Secret and Tenant ID are correct...")
         sys.exit(1)
+
     else:
         return token
+
+def build_auth_headers(token): 
+    
+    auth_headers = {
+        'Authorization': f'Bearer {token}',
+        'Content-Type': 'application/json'
+    }
+
+    return auth_headers

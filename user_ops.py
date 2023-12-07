@@ -1,6 +1,6 @@
 import requests
 import csv
-from graph_ops import get_token
+from graph_ops import get_token, build_auth_headers
 
 # List all users within the tenant
 def list_all(args):
@@ -21,11 +21,7 @@ def list_all(args):
        # Add continuation_url if it has changed whilst in the loop 
         graph_all_users = continuation_url
       
-        # Set request headers and pass through authorisation token
-        headers = {
-            'Authorization': f'Bearer {token}',
-            'Content-Type': 'application/json'
-        }
+        headers = build_auth_headers(token)
 
         # Perform request to GRAPH API
         graph_all_users_r = requests.get(graph_all_users, headers=headers)
@@ -133,8 +129,10 @@ def list_all(args):
 def list_user_details(args):
 
     token = get_token(args)
+    headers = build_auth_headers(token)
 
-    specific_user_request = ""
+    user_principle_name = args.userPrin
 
-    print("Listing specific user details")
+    spec_user_req = f'https://graph.microsoft.com/v1.0/users/{user_principle_name}'
 
+    spec_user_res = requests.get(spec_user_req, headers=headers)
