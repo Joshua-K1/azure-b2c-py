@@ -20,7 +20,7 @@ if __name__ == "__main__":
     parser.add_argument("-clientSecret", type=str, required=True, help="The Client Secret")
     parser.add_argument("-tenantId", type=str, required=True, help="The Tenant ID")
     parser.add_argument("-listAll", action="store_true", help="List all users")
-    parser.add_argument("userPrin", type=str, required=False, help="User Principle ID")
+    parser.add_argument("-userPrin", type=str, required=False, help="User Principle ID")
 
     args = parser.parse_args()
 
