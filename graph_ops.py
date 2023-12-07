@@ -1,4 +1,5 @@
 import requests
+import sys
 
 # Get authentication token for GRAPH
 def get_token(args): 
@@ -14,8 +15,13 @@ def get_token(args):
         'client_secret': client_secret,
         'scope': 'https://graph.microsoft.com/.default'
     }
-    
+
     token_r = requests.post(token_url, data=token_data)
     token = token_r.json().get("access_token")
 
-    return token
+    if token is None:
+        print("Failed to get authentication token...")
+        print("Ensure that the Client ID, Client Secret and Tenant ID are correct...")
+        sys.exit(1)
+    else:
+        return token
