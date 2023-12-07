@@ -123,8 +123,7 @@ def list_all(args):
 def list_user_details(args):
     print("Printing specific user details") 
 
-    client_id = args.clientId
-    client_secret = args.clientSecret
-    tenant_id = args.tenantId
+    token = get_token(args)
 
+    print("Listing specific user details")
 
