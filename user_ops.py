@@ -136,3 +136,9 @@ def list_user_details(args):
     spec_user_req = f'https://graph.microsoft.com/v1.0/users/{user_principle_name}'
 
     spec_user_res = requests.get(spec_user_req, headers=headers)
+
+    if spec_user_res.status_code == 404: 
+        print(f'User with principle {user_principle_name} not be found...')
+    else: 
+        spec_user_res = spec_user_res.json()
+        print(spec_user_res)
