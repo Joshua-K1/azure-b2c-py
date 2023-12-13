@@ -134,8 +134,10 @@ def list_user_details(args):
     user_principle_name = args.userPrin
 
     spec_user_req = f'https://graph.microsoft.com/v1.0/users/{user_principle_name}'
-
-    spec_user_res = requests.get(spec_user_req, headers=headers)
+    try:
+        spec_user_res = requests.get(spec_user_req, headers=headers)
+    except: 
+        print("Failed to perform GET request")
 
     if spec_user_res.status_code == 404: 
         print(f'User with principle {user_principle_name} not be found...')
