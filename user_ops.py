@@ -1,9 +1,10 @@
 import requests
+import argparse
 import csv
 from graph_ops import get_token, build_auth_headers
 
 # List all users within the tenant
-def list_all(args):
+def list_all(args: argparse.Namespace) -> None:
     token = get_token(args)
 
     # Iniial URL, uncomment on first run
@@ -126,7 +127,7 @@ def list_all(args):
         print(f"Data written to {csv_file_name}")
 
 # List details of a specific user
-def list_user_details(args):
+def list_user_details(args: argparse.Namespace) -> None:
 
     token = get_token(args)
     headers = build_auth_headers(token)
@@ -144,3 +145,4 @@ def list_user_details(args):
     else: 
         spec_user_res = spec_user_res.json()
         print(spec_user_res)
+

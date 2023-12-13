@@ -1,5 +1,3 @@
-import requests
-import csv
 import argparse 
 from user_ops import list_all, list_user_details
 
