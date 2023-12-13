@@ -139,6 +139,7 @@ def list_user_details(args: argparse.Namespace) -> None:
 
     try:
         spec_user_res = requests.get(spec_user_req, headers=headers)
+        print(spec_user_res)
     except HTTPError as http_error: 
         print(f'HTTP Error occurred:{http_error}')
     except ConnectionError as conn_error: 
@@ -147,6 +148,4 @@ def list_user_details(args: argparse.Namespace) -> None:
         print(f'Timeout Error occurred:{timeout_error}')
     except RequestException as req_error: 
         print(f'Request Error occurr:{req_error}')
-    else: 
-        print(spec_user_res)
 
