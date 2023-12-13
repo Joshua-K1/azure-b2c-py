@@ -1,8 +1,9 @@
 import requests
+import argparse
 import sys
 
 # Get authentication token for GRAPH
-def get_token(args): 
+def get_token(args: argparse.Namespace) -> str: 
 
     client_id = args.clientId
     client_secret = args.clientSecret

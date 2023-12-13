@@ -1,5 +1,3 @@
-import requests
-import csv
 import argparse 
 from user_ops import list_all, list_user_details
 
@@ -25,7 +23,4 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     main(args)
-
-
-
 
