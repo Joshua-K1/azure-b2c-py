@@ -4,6 +4,9 @@ import csv
 from requests.exceptions import HTTPError, ConnectionError, Timeout, RequestException
 from graph_ops import get_token, build_auth_headers
 
+# TODO: 
+# Create user class
+
 # List all users within the tenant
 def list_all(args: argparse.Namespace) -> None:
     token = get_token(args)

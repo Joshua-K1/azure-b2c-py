@@ -1,7 +1,6 @@
 import requests
 import argparse
 from requests.exceptions import HTTPError, ConnectionError, Timeout, RequestException
-import sys
 
 # Get authentication token for GRAPH
 def get_token(args: argparse.Namespace) -> str: 
