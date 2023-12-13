@@ -1,6 +1,7 @@
 import requests
 import argparse
 import csv
+from requests.exceptions import HTTPError, ConnectionError, Timeout, RequestException
 from graph_ops import get_token, build_auth_headers
 
 # List all users within the tenant
@@ -138,8 +139,14 @@ def list_user_details(args: argparse.Namespace) -> None:
 
     try:
         spec_user_res = requests.get(spec_user_req, headers=headers)
-    except: 
-        print("Failed to perform GET request")
+    except HTTPError as http_error: 
+        print(f'HTTP Error occurred:{http_error}')
+    except ConnectionError as conn_error: 
+        print(f'Connection Error occurred:{conn_error}')
+    except Timeout as timeout_error: 
+        print(f'Timeout Error occurred:{timeout_error}')
+    except RequestException as req_error: 
+        print(f'Request Error occurr:{req_error}')
     else: 
         print(spec_user_res)
 
