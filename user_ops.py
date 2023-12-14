@@ -19,9 +19,7 @@ class User:
         # Iniial URL, uncomment on first run
         continuation_url = 'https://graph.microsoft.com/v1.0/users?$select=signInActivity&$top=999'
 
-        for x in range(25):
-            
-            # Opening continuation_url as log file
+        for _ in range(25):
             f = open("continuation_url.log", "a")
             f.write(continuation_url)
             f.write("\n")
@@ -139,7 +137,6 @@ class User:
 
     # List details of a specific user
     def list_user_details(self, args: argparse.Namespace) -> None:
-
         token = get_token(args)
         headers = build_auth_headers(token)
 
