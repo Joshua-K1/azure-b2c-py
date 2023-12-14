@@ -5,11 +5,9 @@ from requests.exceptions import HTTPError, ConnectionError, Timeout, RequestExce
 # Get authentication token for GRAPH
 def get_token(args: argparse.Namespace) -> str: 
     token = ""
-
     client_id = args.clientId
     client_secret = args.clientSecret
     tenant_id = args.tenantId
-
     token_url = f'https://login.microsoftonline.com/{tenant_id}/oauth2/v2.0/token'
     token_data = {
         'grant_type': 'client_credentials',
@@ -33,7 +31,6 @@ def get_token(args: argparse.Namespace) -> str:
     return token
 
 def build_auth_headers(token: str) -> dict:
-    
     auth_headers = {
         'Authorization': f'Bearer {token}',
         'Content-Type': 'application/json'
